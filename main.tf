@@ -11,17 +11,6 @@ provider "azurerm" {
   features {}
 }
 
-data "terraform_remote_state" "network" {
-  backend = "remote"
-  
-  config = {
-    organization = "Hashi-Demo"
-    workspaces = {
-      name = "Raddit-Network"
-    }
-  }
-}
-
 # Locate existing Packer Image
 data "azurerm_image" "search" {
   name                = "raddit-base-ISO"
