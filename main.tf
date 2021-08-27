@@ -47,7 +47,7 @@ resource "azurerm_network_interface" "hashinic" {
   resource_group_name = var.hashirg
   ip_configuration {
     name                          = "vpNicConfiguration"
-    subnet_id                     = var.sb_id
+    subnet_id                     = var.vpc_subnet
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.hashipubip.id
   }
@@ -55,7 +55,7 @@ resource "azurerm_network_interface" "hashinic" {
 
 resource "azurerm_network_interface_security_group_association" "hashinicsgass" {
   network_interface_id      = azurerm_network_interface.hashinic.id
-  network_security_group_id = var.vpnsg
+  network_security_group_id = var.vpc_nsg
 }
 
 # Create virtual machine
