@@ -84,8 +84,3 @@ resource "time_sleep" "wait_2_min" {
   depends_on = [azurerm_virtual_machine.radditvm]
   create_duration = "120s"
 }
-
-output "public_ip" {
- depends_on = [time_sleep.wait_2_min]
- value = azurerm_public_ip.hashipubip.ip_address
-}
